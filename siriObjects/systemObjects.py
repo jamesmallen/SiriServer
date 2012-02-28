@@ -54,9 +54,9 @@ class DomainObject(AceObject):
         return super(DomainObject, self).to_plist()
 
 class DomainObjectCreate(ClientBoundCommand):
-    def __init__(self, refId, object=None):
+    def __init__(self, refId, obj=None):
         super(DomainObjectCreate, self).__init__("DomainObjectCreate", "com.apple.ace.system", None, refId)
-        self.object = object
+        self.object = obj
     
     def to_plist(self):
         self.add_property('object')
@@ -282,7 +282,7 @@ class Location(DomainObject):
     AccuracyKilometerValue = "Kilometer"
     AccuracyThreeKilometersValue = "ThreeKilometers"
     def __init__(self, label="", street="", city="", stateCode="", countryCode="", postalCode="", latitude=0, longitude=0, accuracy=0, group="com.apple.ace.system", clazz="Location"):
-        super(Location, self).__init__(group, clazz)
+        super(Location, self).__init__(group, None, clazz)
         self.label = label
         self.street = street
         self.city = city
